@@ -381,7 +381,7 @@ public class HoMM3 {
                 result += "\nБудет убито: "+kills.get(2) + " существ";
             }
             if (creaturesHitStack.chanceKill != 0) {
-                result += "\n\nДоп убийство с шансом " + (int)(((amount * creaturesHitStack.chanceKill)%1)*100) + "%";
+                result += "\n\nДоп убийство с шансом " + (int)Math.ceil(((amount * creaturesHitStack.chanceKill)%1)*100) + "%";
             }
         }
 
@@ -970,7 +970,7 @@ public class HoMM3 {
                 result += "\nБудет убито: " + kills.getFirst() + " существ";
             }
             if (creaturesHitStack.chanceKill != 0) {
-                result += "\n\nДоп убийство с шансом " + (int)(((amount * creaturesHitStack.chanceKill)%1)*100) + "%";
+                result += "\n\nДоп убийство с шансом " + (int)Math.ceil(((amount * creaturesHitStack.chanceKill)%1)*100) + "%";
             }
             if (creaturesHitStack.Name.equals("Thunderbird")) {
                 result += "\n\n + "+creaturesHitStack.extraDamage*amount+" урона с вероятностью 20%";
