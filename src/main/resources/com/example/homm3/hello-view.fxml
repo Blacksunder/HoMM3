@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="700.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.homm3.Controller">
+   <children>
+      <AnchorPane prefHeight="67.0" prefWidth="700.0" style="-fx-background-color: #000000;">
+         <children>
+            <Label alignment="CENTER" layoutX="99.0" layoutY="4.0" prefHeight="60.0" prefWidth="502.0" text="Heroes of Might and Magic 3 Calculator" textAlignment="CENTER">
+               <font>
+                  <Font name="Century" size="27.0" />
+               </font>
+               <textFill>
+                  <LinearGradient cycleMethod="REPEAT" endX="0.5545023696682464" endY="0.2985781990521326" startX="0.7156398104265403" startY="0.46445497630331745">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.4444444477558136" blue="0.4444444477558136" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.8289473652839661" green="0.8289473652839661" blue="0.8289473652839661" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="67.0" prefHeight="416.0" prefWidth="185.0" style="-fx-background-color: #DEB887;">
+         <children>
+            <CheckBox id="AttackNeutral" fx:id="AttackNeutral" layoutX="53.0" layoutY="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Neutral">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </CheckBox>
+            <Label alignment="CENTER" layoutX="27.0" layoutY="7.0" prefHeight="31.0" prefWidth="131.0" text="Attacking Heroe" textAlignment="CENTER" textFill="#b20000">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="30.0" layoutY="63.0" prefHeight="31.0" prefWidth="47.0" text="Attack">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="91.0" prefHeight="31.0" prefWidth="55.0" text="Defense">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetFirstHeroeAttack" fx:id="SetFirstHeroeAttack" alignment="CENTER" layoutX="106.0" layoutY="66.0" prefHeight="5.0" prefWidth="41.0" />
+            <TextField id="SetFirstHeroeDefense" fx:id="SetFirstHeroeDefense" alignment="CENTER" layoutX="106.0" layoutY="94.0" prefHeight="5.0" prefWidth="41.0" />
+            <Label layoutX="26.0" layoutY="122.0" prefHeight="31.0" prefWidth="55.0" text="Offense">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="FirstHeroeOffense" fx:id="FirstHeroeOffense" layoutX="87.0" layoutY="125.0" prefHeight="25.0" prefWidth="80.0" />
+            <Label layoutX="23.0" layoutY="157.0" prefHeight="31.0" prefWidth="62.0" text="Armorer">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="FirstHeroeArmory" fx:id="FirstHeroeArmory" layoutX="87.0" layoutY="160.0" prefHeight="25.0" prefWidth="80.0" />
+            <Label layoutX="26.0" layoutY="193.0" prefHeight="31.0" prefWidth="55.0" text="Archery">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="FirstHeroeArchery" fx:id="FirstHeroeArchery" layoutX="87.0" layoutY="196.0" prefHeight="25.0" prefWidth="80.0" />
+            <Label layoutX="37.0" layoutY="260.0" prefHeight="31.0" prefWidth="33.0" text="Spec">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="FirstHeroeSpec" fx:id="FirstHeroeSpec" layoutX="87.0" layoutY="263.0" prefHeight="25.0" prefWidth="80.0" />
+            <Label alignment="CENTER" layoutX="37.0" layoutY="345.0" prefHeight="31.0" prefWidth="33.0" text="LVL" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetFirstHeroeLvl" fx:id="SetFirstHeroeLvl" alignment="CENTER" layoutX="108.0" layoutY="348.0" prefHeight="5.0" prefWidth="41.0" />
+            <Label fx:id="FirstHeroeExtraArchery" layoutX="10.0" layoutY="227.0" prefHeight="31.0" prefWidth="110.0" text="ExtraArchery(%)">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetFirstHeroeDefense" fx:id="SetFirstHeroeExtraArchery" alignment="CENTER" layoutX="128.0" layoutY="230.0" prefHeight="5.0" prefWidth="41.0" />
+            <Label alignment="CENTER" layoutX="26.0" layoutY="373.0" prefHeight="31.0" prefWidth="55.0" text="Amount" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetFirstHeroeLvl" fx:id="Amount" alignment="CENTER" layoutX="108.0" layoutY="376.0" prefHeight="5.0" prefWidth="41.0" />
+            <Label fx:id="FirstHeroeFixAttack" layoutX="27.0" layoutY="296.0" text="+Attack">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetFirstHeroeLvl" fx:id="FirstHeroeFixDef" alignment="CENTER" layoutX="108.0" layoutY="320.0" prefHeight="5.0" prefWidth="41.0" />
+            <TextField id="SetFirstHeroeLvl" fx:id="FirstHeroeFixAtt" alignment="CENTER" layoutX="108.0" layoutY="293.0" prefHeight="20.0" prefWidth="41.0" />
+            <Label fx:id="FirstHeroeFixDefense" layoutX="23.0" layoutY="323.0" text="+Defense">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="515.0" layoutY="67.0" prefHeight="416.0" prefWidth="185.0" style="-fx-background-color: #DEB887;">
+         <children>
+            <CheckBox id="DefenseNeutral" fx:id="DefenseNeutral" layoutX="53.0" layoutY="38.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Neutral">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </CheckBox>
+            <Label alignment="CENTER" layoutX="27.0" layoutY="7.0" prefHeight="31.0" prefWidth="131.0" text="Defensing Heroe" textAlignment="CENTER" textFill="#b20000">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="30.0" layoutY="63.0" prefHeight="31.0" prefWidth="47.0" text="Attack">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="91.0" prefHeight="31.0" prefWidth="55.0" text="Defense">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetAttackSecondHeroe" fx:id="SetSecondHeroeAttack" alignment="CENTER" layoutX="106.0" layoutY="66.0" prefHeight="5.0" prefWidth="41.0" />
+            <TextField id="SetSecondHeroeDefense" fx:id="SetSecondHeroeDefense" alignment="CENTER" layoutX="106.0" layoutY="94.0" prefHeight="5.0" prefWidth="41.0" />
+            <Label layoutX="26.0" layoutY="122.0" prefHeight="31.0" prefWidth="55.0" text="Offense">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="SecondHeroeOffense" fx:id="SecondHeroeOffense" layoutX="87.0" layoutY="125.0" prefHeight="25.0" prefWidth="80.0" />
+            <Label layoutX="23.0" layoutY="157.0" prefHeight="31.0" prefWidth="62.0" text="Armorer">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="SecondHeroeArmory" fx:id="SecondHeroeArmory" layoutX="87.0" layoutY="160.0" prefHeight="25.0" prefWidth="80.0" />
+            <Label layoutX="26.0" layoutY="193.0" prefHeight="31.0" prefWidth="55.0" text="Archery">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="SecondHeroeArchery" fx:id="SecondHeroeArchery" layoutX="87.0" layoutY="196.0" prefHeight="25.0" prefWidth="80.0" />
+            <Label layoutX="37.0" layoutY="260.0" prefHeight="31.0" prefWidth="33.0" text="Spec">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox id="SecondHeroeSpec" fx:id="SecondHeroeSpec" layoutX="87.0" layoutY="263.0" prefHeight="25.0" prefWidth="80.0" />
+            <Label alignment="CENTER" layoutX="37.0" layoutY="345.0" prefHeight="31.0" prefWidth="33.0" text="LVL" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetSecondHeroeLvl" fx:id="SetSecondHeroeLvl" alignment="CENTER" layoutX="108.0" layoutY="348.0" prefHeight="5.0" prefWidth="41.0" />
+            <Label fx:id="SecondHeroeExtraArchery" layoutX="10.0" layoutY="227.0" prefHeight="31.0" prefWidth="110.0" text="ExtraArchery(%)">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetFirstHeroeDefense" fx:id="SetSecondHeroeExtraArchery" alignment="CENTER" layoutX="128.0" layoutY="230.0" prefHeight="5.0" prefWidth="41.0" />
+            <Label fx:id="SecondHeroeFixAttack" layoutX="27.0" layoutY="296.0" text="+Attack">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetFirstHeroeLvl" fx:id="SecondHeroeFixDef" alignment="CENTER" layoutX="108.0" layoutY="320.0" prefHeight="5.0" prefWidth="41.0" />
+            <TextField id="SetFirstHeroeLvl" fx:id="SecondHeroeFixAtt" alignment="CENTER" layoutX="108.0" layoutY="293.0" prefHeight="20.0" prefWidth="41.0" />
+            <Label fx:id="SecondHeroeFixDefense" layoutX="23.0" layoutY="323.0" text="+Defense">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Line endX="-4.0" endY="111.0" layoutX="354.0" layoutY="131.0" startX="-4.0" startY="-58.0" />
+      <Label alignment="CENTER" layoutX="205.0" layoutY="78.0" prefHeight="31.0" prefWidth="137.0" text="Attacking Creature" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="363.0" layoutY="78.0" prefHeight="31.0" prefWidth="137.0" text="Defensing Creature" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox id="SetAttackFraction" fx:id="SetAttackFraction" layoutX="215.0" layoutY="133.0" prefHeight="25.0" prefWidth="116.0" />
+      <ChoiceBox id="SetDefenseFraction" fx:id="SetDefenseFraction" layoutX="373.0" layoutY="133.0" prefHeight="25.0" prefWidth="116.0" />
+      <ChoiceBox id="SetAttackCreature" fx:id="SetAttackCreature" layoutX="218.0" layoutY="183.0" prefHeight="25.0" prefWidth="116.0" />
+      <ChoiceBox id="SetDefenseCreature" fx:id="SetDefenseCreature" layoutX="373.0" layoutY="183.0" prefHeight="25.0" prefWidth="116.0" />
+      <Label alignment="CENTER" layoutX="248.0" layoutY="108.0" prefHeight="31.0" prefWidth="55.0" text="Fraction">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="400.0" layoutY="108.0" prefHeight="31.0" prefWidth="55.0" text="Fraction">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="242.0" layoutY="159.0" prefHeight="31.0" prefWidth="62.0" text="Creature">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="397.0" layoutY="159.0" prefHeight="31.0" prefWidth="62.0" text="Creature">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <CheckBox id="SetAttackNativeLand" fx:id="SetAttackNativeLand" layoutX="218.0" layoutY="219.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Native Land">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox id="SetDefenseNativeLand" fx:id="SetDefenseNativeLand" layoutX="373.0" layoutY="219.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Native Land">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </CheckBox>
+      <Button id="Calculate" fx:id="Calculate" alignment="CENTER" layoutX="285.0" layoutY="245.0" mnemonicParsing="false" onAction="#Calculate" prefHeight="31.0" prefWidth="131.0" text="Calculate">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <TextArea id="ResultArea" fx:id="ResultArea" editable="false" layoutX="197.0" layoutY="287.0" prefHeight="194.0" prefWidth="307.0">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></TextArea>
+   </children>
+</AnchorPane>
