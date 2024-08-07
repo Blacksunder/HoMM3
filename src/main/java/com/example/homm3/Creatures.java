@@ -8,8 +8,9 @@ public class Creatures extends HoMM3 {
     float ignoreDefense, ignoreAttack, chanceKill, hate;
     int extraDamage;
     String Name, Hate1, Hate2;
+    boolean PsychicImmune;
 
-    public Creatures(String Name, int Attack, int Defense, int health, int minDamage, int maxDamage, int attacks, float ignoreDefense, float ignoreAttack, int lvl, float chanceKill, int extraDamage, String Hate1, String Hate2, float hate) {
+    public Creatures(String Name, int Attack, int Defense, int health, int minDamage, int maxDamage, int attacks, float ignoreDefense, float ignoreAttack, int lvl, float chanceKill, int extraDamage, String Hate1, String Hate2, float hate,boolean PsychicImmune) {
         super(Attack, Defense);
         this.health = health;
         this.attacks = attacks;
@@ -24,5 +25,6 @@ public class Creatures extends HoMM3 {
         this.Name = Name;
         this.Hate1 = Hate1;
         this.Hate2 = Hate2;
+        this.PsychicImmune = PsychicImmune;
     }
 }

@@ -420,12 +420,10 @@ public class HoMM3 {
                         if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
                         FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
                     }
-                        FinalMaxDamage += amount * creatures.extraDamage;
                         damage.add(FinalMaxDamage);
 
                         MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill));
                         kills.add(MaxKills);
-                        FinalMaxDamage -= amount * creatures.extraDamage;
 
                     } else {
                         FinalMinDamage = (int) ((1 + heroeAttack.offense) * (minDamage * change));
@@ -457,12 +455,10 @@ public class HoMM3 {
                         if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
                         FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
                     }
-                        FinalMaxDamage += amount * creatures.extraDamage;
                         damage.add(FinalMaxDamage);
 
                         MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
                         kills.add(MaxKills);
-                        FinalMaxDamage -= amount * creatures.extraDamage;
                     }
                 } else {
                     FinalMinDamage = (int) (minDamage * change);
@@ -494,15 +490,317 @@ public class HoMM3 {
                     if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
                         FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
                     }
+                    damage.add(FinalMaxDamage);
+
+                    MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
+                    kills.add(MaxKills);
+                }
+            }
+
+            // Расчет урона в случае атаки Психическими Элементалями (-50% урона по сущ-вам с иммунитетом к магии разума)
+
+            else if (creaturesHitStack instanceof PsychicElemental) {
+                if (heroeAttack.offense != 0) {
+                    if (heroeAttack.SpecOffense) {
+                        FinalMinDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (minDamage * change));
+                        if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMinDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
+                        }
+                        else {
+                            FinalMinDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer) * (minDamage * change)));
+                        }
+                    }
+                        if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMinDamage = (int)(FinalMinDamage*creaturesHitStack.hate);
+                    }
+                        if (creatures.PsychicImmune) {
+                            FinalMinDamage /= 2;
+                        }
+                        damage.add(FinalMinDamage);
+
+                        MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
+                        kills.add(MinKills);
+                        if (creatures.PsychicImmune) {
+                            FinalMinDamage *= 2;
+                        }
+
+                        FinalMaxDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (maxDamage * change));
+                        if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)));
+                        }
+                        else {
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer) * (maxDamage * change)));
+                        }
+                    }
+                        if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
+                    }
+                        if (creatures.PsychicImmune) {
+                            FinalMaxDamage /= 2;
+                        }
+                        FinalMaxDamage += amount * creatures.extraDamage;
+                        damage.add(FinalMaxDamage);
+
+                        MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill));
+                        kills.add(MaxKills);
+                        FinalMaxDamage -= amount * creatures.extraDamage;
+                        if (creatures.PsychicImmune) {
+                            FinalMaxDamage *= 2;
+                        }
+
+                    } else {
+                        FinalMinDamage = (int) ((1 + heroeAttack.offense) * (minDamage * change));
+                        if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMinDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
+                        }
+                        else {
+                            FinalMinDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer) * (minDamage * change)));
+                        }
+                    }
+                        if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMinDamage = (int)(FinalMinDamage*creaturesHitStack.hate);
+                    }
+                        if (creatures.PsychicImmune) {
+                            FinalMinDamage /= 2;
+                        }
+                        damage.add(FinalMinDamage);
+
+                        MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
+                        kills.add(MinKills);
+                        if (creatures.PsychicImmune) {
+                            FinalMinDamage *= 2;
+                        }
+
+                        FinalMaxDamage = (int) ((1 + heroeAttack.offense) * (maxDamage * change));
+                        if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)));
+                        }
+                        else {
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer) * (maxDamage * change)));
+                        }
+                    }
+                        if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
+                    }
+                        if (creatures.PsychicImmune) {
+                            FinalMaxDamage /= 2;
+                        }
+                        FinalMaxDamage += amount * creatures.extraDamage;
+                        damage.add(FinalMaxDamage);
+
+                        MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
+                        kills.add(MaxKills);
+                        FinalMaxDamage -= amount * creatures.extraDamage;
+                        if (creatures.PsychicImmune) {
+                            FinalMaxDamage *= 2;
+                        }
+                    }
+                } else {
+                    FinalMinDamage = (int) (minDamage * change);
+                    if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMinDamage = (int) (((1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
+                        }
+                        else {
+                            FinalMinDamage = (int) (((1 - heroeDefense.armorer) * (minDamage * change)));
+                        }
+                    }
+                    if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMinDamage = (int)(FinalMinDamage*creaturesHitStack.hate);
+                    }
+                    if (creatures.PsychicImmune) {
+                            FinalMinDamage /= 2;
+                        }
+                    damage.add(FinalMinDamage);
+
+                    MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
+                    kills.add(MinKills);
+                    if (creatures.PsychicImmune) {
+                            FinalMinDamage *= 2;
+                        }
+
+                    FinalMaxDamage = (int) ((maxDamage * change) + amount * creatures.extraDamage);
+                    if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)));
+                        }
+                        else {
+                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer) * (maxDamage * change)));
+                        }
+                    }
+                    if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
+                    }
+                    if (creatures.PsychicImmune) {
+                            FinalMaxDamage /= 2;
+                        }
                     FinalMaxDamage += amount * creaturesHitStack.extraDamage;
                     damage.add(FinalMaxDamage);
 
                     MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
                     kills.add(MaxKills);
                     FinalMaxDamage -= amount * creaturesHitStack.extraDamage;
+                    if (creatures.PsychicImmune) {
+                            FinalMaxDamage *= 2;
+                        }
                 }
             }
 
+            // Расчет урона в случае атаки Элементалями Магии (-50% урона по сущ-вам с иммунитетом к магии)
+            else if (creaturesHitStack instanceof MagicElemental) {
+                if (heroeAttack.offense != 0) {
+                    if (heroeAttack.SpecOffense) {
+                        FinalMinDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (minDamage * change));
+                        if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMinDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
+                        }
+                        else {
+                            FinalMinDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer) * (minDamage * change)));
+                        }
+                    }
+                        if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMinDamage = (int)(FinalMinDamage*creaturesHitStack.hate);
+                    }
+                        if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMinDamage /= 2;
+                        }
+                        damage.add(FinalMinDamage);
+
+                        MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
+                        kills.add(MinKills);
+                        if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMinDamage *= 2;
+                        }
+
+                        FinalMaxDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (maxDamage * change));
+                        if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)));
+                        }
+                        else {
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer) * (maxDamage * change)));
+                        }
+                    }
+                        if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
+                    }
+                        if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMaxDamage /= 2;
+                        }
+                        FinalMaxDamage += amount * creatures.extraDamage;
+                        damage.add(FinalMaxDamage);
+
+                        MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill));
+                        kills.add(MaxKills);
+                        FinalMaxDamage -= amount * creatures.extraDamage;
+                        if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMaxDamage *= 2;
+                        }
+
+                    } else {
+                        FinalMinDamage = (int) ((1 + heroeAttack.offense) * (minDamage * change));
+                        if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMinDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
+                        }
+                        else {
+                            FinalMinDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer) * (minDamage * change)));
+                        }
+                    }
+                        if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMinDamage = (int)(FinalMinDamage*creaturesHitStack.hate);
+                    }
+                        if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMinDamage /= 2;
+                        }
+                        damage.add(FinalMinDamage);
+
+                        MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
+                        kills.add(MinKills);
+                        if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMinDamage *= 2;
+                        }
+
+                        FinalMaxDamage = (int) ((1 + heroeAttack.offense) * (maxDamage * change));
+                        if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)));
+                        }
+                        else {
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer) * (maxDamage * change)));
+                        }
+                    }
+                        if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
+                    }
+                        if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMaxDamage /= 2;
+                        }
+                        FinalMaxDamage += amount * creatures.extraDamage;
+                        damage.add(FinalMaxDamage);
+
+                        MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
+                        kills.add(MaxKills);
+                        FinalMaxDamage -= amount * creatures.extraDamage;
+                        if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMaxDamage *= 2;
+                        }
+                    }
+                } else {
+                    FinalMinDamage = (int) (minDamage * change);
+                    if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMinDamage = (int) (((1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
+                        }
+                        else {
+                            FinalMinDamage = (int) (((1 - heroeDefense.armorer) * (minDamage * change)));
+                        }
+                    }
+                    if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMinDamage = (int)(FinalMinDamage*creaturesHitStack.hate);
+                    }
+                    if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMinDamage /= 2;
+                        }
+                    damage.add(FinalMinDamage);
+
+                    MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
+                    kills.add(MinKills);
+                    if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMinDamage *= 2;
+                        }
+
+                    FinalMaxDamage = (int) ((maxDamage * change) + amount * creatures.extraDamage);
+                    if (heroeDefense.armorer != 0) {
+                        if (heroeDefense.SpecDefense) {
+                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)));
+                        }
+                        else {
+                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer) * (maxDamage * change)));
+                        }
+                    }
+                    if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
+                        FinalMaxDamage = (int)(FinalMaxDamage*creaturesHitStack.hate);
+                    }
+                    if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMaxDamage /= 2;
+                        }
+                    FinalMaxDamage += amount * creaturesHitStack.extraDamage;
+                    damage.add(FinalMaxDamage);
+
+                    MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
+                    kills.add(MaxKills);
+                    FinalMaxDamage -= amount * creaturesHitStack.extraDamage;
+                    if (creatures.Name.equals("BlackDragon") || creatures.Name.equals("MagicElemental")) {
+                            FinalMaxDamage *= 2;
+                        }
+                }
+            }
 
             // Расчет урона в случае атаки Ассидами со способностью Кровожадность
 
@@ -643,7 +941,11 @@ public class HoMM3 {
                         }
 
                 }
-            } else if (creaturesHitStack instanceof DreadNights) {
+            }
+
+            // Расчет урона в случае атаки Рыцарями Смерти со способностью "Смертельный удар"
+
+            else if (creaturesHitStack instanceof DreadNights) {
                 if (heroeAttack.offense != 0) {
                     if (heroeAttack.SpecOffense) {
                         FinalMinDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (minDamage * change));
@@ -660,13 +962,13 @@ public class HoMM3 {
                         MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
                         kills.add(MinKills);
 
-                        FinalMaxDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (maxDamage * change)*2 + amount * creatures.extraDamage);
+                        FinalMaxDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (maxDamage * change) + amount * creatures.extraDamage);
                         if (heroeDefense.armorer != 0) {
                         if (heroeDefense.SpecDefense) {
-                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change))*2 + amount * creaturesHitStack.extraDamage);
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
                         }
                         else {
-                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer) * (maxDamage * change))*2 + amount * creaturesHitStack.extraDamage);
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
                         }
                     }
                         damage.add(FinalMaxDamage);
@@ -690,13 +992,13 @@ public class HoMM3 {
                         MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
                         kills.add(MinKills);
 
-                        FinalMaxDamage = (int) ((1 + heroeAttack.offense) * (maxDamage * change)*2 + amount * creatures.extraDamage);
+                        FinalMaxDamage = (int) ((1 + heroeAttack.offense) * (maxDamage * change) + amount * creatures.extraDamage);
                         if (heroeDefense.armorer != 0) {
                         if (heroeDefense.SpecDefense) {
-                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change))*2 + amount * creaturesHitStack.extraDamage);
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
                         }
                         else {
-                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer) * (maxDamage * change))*2 + amount * creaturesHitStack.extraDamage);
+                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
                         }
                     }
                         damage.add(FinalMaxDamage);
@@ -721,13 +1023,13 @@ public class HoMM3 {
                     MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
                     kills.add(MinKills);
 
-                    FinalMaxDamage = (int) ((maxDamage * change)*2 + amount * creatures.extraDamage);
+                    FinalMaxDamage = (int) ((maxDamage * change) + amount * creatures.extraDamage);
                     if (heroeDefense.armorer != 0) {
                         if (heroeDefense.SpecDefense) {
-                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change))*2 + amount * creaturesHitStack.extraDamage);
+                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
                         }
                         else {
-                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer) * (maxDamage * change))*2 + amount * creaturesHitStack.extraDamage);
+                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
                         }
                     }
                     damage.add(FinalMaxDamage);
@@ -765,6 +1067,15 @@ public class HoMM3 {
             }
             if (creaturesHitStack.chanceKill != 0) {
                 result += "\n\nДоп убийство с шансом " + (int)(((amount * creaturesHitStack.chanceKill)%1)*100) + "%";
+            }
+            if (creaturesHitStack.Name.equals("Thunderbird")) {
+                result += "\n\n + "+creaturesHitStack.extraDamage*amount+" урона с вероятностью 20%";
+            }
+            if (creaturesHitStack.Name.equals("DreadNight")) {
+                result += "\n\nДвойной урон с вероятностью 20%";
+            }
+            if (creaturesHitStack instanceof Assids) {
+                result += "\n\nУрон рассчитан при ударе по существам с максимальным здоровьем";
             }
         }
 
