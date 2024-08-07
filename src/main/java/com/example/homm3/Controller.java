@@ -95,7 +95,7 @@ public class Controller {
       ArcheryCreatures Lich = new ArcheryCreatures("Lich",13,10,30,11,13,1,0,0,5,0,0,"","",1,true);
       ArcheryCreatures PowerLich = new ArcheryCreatures("PowerLich",13,10,40,11,15,1,0,0,5,0,0,"","",1,true);
       OffenseCreatures BlackNight = new OffenseCreatures("BlackNight",16,16,120,15,30,1,0,0,6,0,0,"","",1,true);
-      DreadNights DreadNight = new DreadNights("DreadNight",18,18,120,15,30,1,0,0,6,0,0,"","",1,true);
+      OffenseCreatures DreadNight = new OffenseCreatures("DreadNight",18,18,120,15,30,1,0,0,6,0,0,"","",1,true);
       OffenseCreatures BoneDragon = new OffenseCreatures("BoneDragon",17,15,150,25,50,1,0,0,7,0,0,"","",1,true);
       OffenseCreatures GhostDragon = new OffenseCreatures("GhostDragon",19,17,200,25,50,1,0,0,7,0,0,"","",1,true);
 

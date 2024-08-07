@@ -849,8 +849,6 @@ public class HoMM3 {
                             MaxKills = (int)(FinalMaxDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
                             kills.set(1,MaxKills);
                         }
-
-
                     } else {
                         FinalMinDamage = (int) ((1 + heroeAttack.offense) * (minDamage * change));
                         if (heroeDefense.armorer != 0) {
@@ -945,100 +943,6 @@ public class HoMM3 {
 
             // Расчет урона в случае атаки Рыцарями Смерти со способностью "Смертельный удар"
 
-            else if (creaturesHitStack instanceof DreadNights) {
-                if (heroeAttack.offense != 0) {
-                    if (heroeAttack.SpecOffense) {
-                        FinalMinDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (minDamage * change));
-                        if (heroeDefense.armorer != 0) {
-                        if (heroeDefense.SpecDefense) {
-                            FinalMinDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
-                        }
-                        else {
-                            FinalMinDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer) * (minDamage * change)));
-                        }
-                    }
-                        damage.add(FinalMinDamage);
-
-                        MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
-                        kills.add(MinKills);
-
-                        FinalMaxDamage = (int) ((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (maxDamage * change) + amount * creatures.extraDamage);
-                        if (heroeDefense.armorer != 0) {
-                        if (heroeDefense.SpecDefense) {
-                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
-                        }
-                        else {
-                            FinalMaxDamage = (int) (((1 + heroeAttack.offense * (1 + 0.05 * heroeAttack.lvl)) * (1 - heroeDefense.armorer) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
-                        }
-                    }
-                        damage.add(FinalMaxDamage);
-
-                        MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
-                        kills.add(MaxKills);
-
-
-                    } else {
-                        FinalMinDamage = (int) ((1 + heroeAttack.offense) * (minDamage * change));
-                        if (heroeDefense.armorer != 0) {
-                        if (heroeDefense.SpecDefense) {
-                            FinalMinDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
-                        }
-                        else {
-                            FinalMinDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer) * (minDamage * change)));
-                        }
-                    }
-                        damage.add(FinalMinDamage);
-
-                        MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
-                        kills.add(MinKills);
-
-                        FinalMaxDamage = (int) ((1 + heroeAttack.offense) * (maxDamage * change) + amount * creatures.extraDamage);
-                        if (heroeDefense.armorer != 0) {
-                        if (heroeDefense.SpecDefense) {
-                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
-                        }
-                        else {
-                            FinalMaxDamage = (int) (((1 + heroeAttack.offense) * (1 - heroeDefense.armorer) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
-                        }
-                    }
-                        damage.add(FinalMaxDamage);
-
-                        MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
-                        kills.add(MaxKills);
-                    }
-
-                } else {
-
-                    FinalMinDamage = (int) (minDamage * change);
-                    if (heroeDefense.armorer != 0) {
-                        if (heroeDefense.SpecDefense) {
-                            FinalMinDamage = (int) (((1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (minDamage * change)));
-                        }
-                        else {
-                            FinalMinDamage = (int) (((1 - heroeDefense.armorer) * (minDamage * change)));
-                        }
-                    }
-                    damage.add(FinalMinDamage);
-
-                    MinKills = (int)(FinalMinDamage/creatures.health) + (int)(amount * creaturesHitStack.chanceKill);
-                    kills.add(MinKills);
-
-                    FinalMaxDamage = (int) ((maxDamage * change) + amount * creatures.extraDamage);
-                    if (heroeDefense.armorer != 0) {
-                        if (heroeDefense.SpecDefense) {
-                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer * (1 + 0.05 * heroeDefense.lvl)) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
-                        }
-                        else {
-                            FinalMaxDamage = (int) (((1 - heroeDefense.armorer) * (maxDamage * change)) + amount * creaturesHitStack.extraDamage);
-                        }
-                    }
-                    damage.add(FinalMaxDamage);
-
-                    MaxKills = (int) ((int)(FinalMaxDamage/creatures.health) + Math.ceil(amount * creaturesHitStack.chanceKill));
-                    kills.add(MaxKills);
-
-                }
-            }
 
             // Урон не может быть меньше 1
             for (int i = 0; i < damage.size(); i++) {
