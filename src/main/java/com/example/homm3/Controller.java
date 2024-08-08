@@ -384,9 +384,9 @@ public class Controller {
     Heroe heroeAttack = new Heroe(
               0,
               0,
-              0.0f,
               0,
-              0.1f,
+              0,
+              0,
               0,
               false,
               false,
