@@ -192,39 +192,45 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="373.0" prefHeight="31.0" prefWidth="55.0" text="Amount" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="SetFirstHeroeLvl" fx:id="AmountDef" alignment="CENTER" layoutX="108.0" layoutY="376.0" prefHeight="5.0" prefWidth="41.0" />
          </children>
       </AnchorPane>
-      <Line endX="-4.0" endY="111.0" layoutX="354.0" layoutY="131.0" startX="-4.0" startY="-58.0" />
-      <Label alignment="CENTER" layoutX="205.0" layoutY="78.0" prefHeight="31.0" prefWidth="137.0" text="Attacking Creature" textAlignment="CENTER">
+      <Line endX="-4.0" endY="111.0" layoutX="355.0" layoutY="131.0" startX="-4.0" startY="-58.0" strokeWidth="3.0" />
+      <Label alignment="CENTER" layoutX="205.0" layoutY="73.0" prefHeight="31.0" prefWidth="137.0" text="Attacking Creature" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="363.0" layoutY="78.0" prefHeight="31.0" prefWidth="137.0" text="Defensing Creature" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="363.0" layoutY="73.0" prefHeight="31.0" prefWidth="137.0" text="Defensing Creature" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Label>
-      <ChoiceBox id="SetAttackFraction" fx:id="SetAttackFraction" layoutX="215.0" layoutY="133.0" prefHeight="25.0" prefWidth="116.0" />
-      <ChoiceBox id="SetDefenseFraction" fx:id="SetDefenseFraction" layoutX="373.0" layoutY="133.0" prefHeight="25.0" prefWidth="116.0" />
-      <ChoiceBox id="SetAttackCreature" fx:id="SetAttackCreature" layoutX="218.0" layoutY="183.0" prefHeight="25.0" prefWidth="116.0" />
-      <ChoiceBox id="SetDefenseCreature" fx:id="SetDefenseCreature" layoutX="373.0" layoutY="183.0" prefHeight="25.0" prefWidth="116.0" />
-      <Label alignment="CENTER" layoutX="248.0" layoutY="108.0" prefHeight="31.0" prefWidth="55.0" text="Fraction">
+      <ChoiceBox id="SetAttackFraction" fx:id="SetAttackFraction" layoutX="215.0" layoutY="139.0" prefHeight="25.0" prefWidth="116.0" />
+      <ChoiceBox id="SetDefenseFraction" fx:id="SetDefenseFraction" layoutX="373.0" layoutY="139.0" prefHeight="25.0" prefWidth="116.0" />
+      <ChoiceBox id="SetAttackCreature" fx:id="SetAttackCreature" layoutX="218.0" layoutY="189.0" prefHeight="25.0" prefWidth="116.0" />
+      <ChoiceBox id="SetDefenseCreature" fx:id="SetDefenseCreature" layoutX="373.0" layoutY="189.0" prefHeight="25.0" prefWidth="116.0" />
+      <Label alignment="CENTER" layoutX="248.0" layoutY="114.0" prefHeight="31.0" prefWidth="55.0" text="Fraction">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="400.0" layoutY="108.0" prefHeight="31.0" prefWidth="55.0" text="Fraction">
+      <Label alignment="CENTER" layoutX="400.0" layoutY="114.0" prefHeight="31.0" prefWidth="55.0" text="Fraction">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="242.0" layoutY="159.0" prefHeight="31.0" prefWidth="62.0" text="Creature">
+      <Label alignment="CENTER" layoutX="242.0" layoutY="165.0" prefHeight="31.0" prefWidth="62.0" text="Creature">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="397.0" layoutY="159.0" prefHeight="31.0" prefWidth="62.0" text="Creature">
+      <Label alignment="CENTER" layoutX="397.0" layoutY="165.0" prefHeight="31.0" prefWidth="62.0" text="Creature">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -239,14 +245,29 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </CheckBox>
-      <Button id="Calculate" fx:id="Calculate" alignment="CENTER" layoutX="285.0" layoutY="245.0" mnemonicParsing="false" onAction="#Calculate" prefHeight="31.0" prefWidth="131.0" text="Calculate">
+      <Button id="Calculate" fx:id="Calculate" alignment="CENTER" layoutX="293.0" layoutY="254.0" mnemonicParsing="false" onAction="#Calculate" prefHeight="31.0" prefWidth="116.0" text="Calculate">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Button>
       <TextArea id="ResultArea" fx:id="ResultArea" editable="false" layoutX="197.0" layoutY="287.0" prefHeight="194.0" prefWidth="307.0">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font></TextArea>
+      <Button fx:id="Change" alignment="CENTER" layoutX="323.0" layoutY="102.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="53.0" text="&lt;=&gt;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="DefCreat" alignment="CENTER" layoutX="404.0" layoutY="256.0" prefHeight="27.0" prefWidth="110.0" text="Text">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="AttCreat" alignment="CENTER" layoutX="187.0" layoutY="256.0" prefHeight="27.0" prefWidth="110.0" text="Text">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

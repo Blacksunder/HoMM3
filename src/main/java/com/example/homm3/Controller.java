@@ -375,6 +375,23 @@ public class Controller {
     private Label SecondHeroeFixDefense;
 
     @FXML
+    private Button Change;
+
+    @FXML
+    void Change(ActionEvent event) {
+
+    }
+
+    @FXML
+    private TextField AmountDef;
+
+    @FXML
+    private Label AttCreat;
+
+    @FXML
+    private  Label DefCreat;
+
+    @FXML
     void Calculate(ActionEvent event) {
 
     }
@@ -435,6 +452,7 @@ public class Controller {
         SetSecondHeroeExtraArchery.setText("0");
         SetSecondHeroeExtraArchery.setVisible(false);
         Amount.setText("1");
+        AmountDef.setText("1");
         FirstHeroeFixAtt.setText("0");
         FirstHeroeFixAtt.setVisible(false);
         FirstHeroeFixDef.setText("0");
@@ -449,6 +467,8 @@ public class Controller {
         SecondHeroeFixDefense.setVisible(false);
         FirstHeroeExtraArchery.setVisible(false);
         SecondHeroeExtraArchery.setVisible(false);
+        AttCreat.setVisible(false);
+        DefCreat.setVisible(false);
 
 
         AttackNeutral.selectedProperty().addListener((observable, oldValue, newValue) ->{
@@ -507,14 +527,14 @@ public class Controller {
 
 
         SetAttackFraction.setItems(SetFraction);
-//        SetAttackFraction.setValue("Neutral");
-        SetAttackCreature.setItems(Neutral);
-//        SetAttackCreature.setValue(Neutral.getFirst());
+//        SetAttackFraction.setValue("Castle");
+//        SetAttackCreature.setItems(Castle);
+//        SetAttackCreature.setValue(Castle.getFirst());
 
         SetDefenseFraction.setItems(SetFraction);
-//        SetDefenseFraction.setValue("Neutral");
-        SetDefenseCreature.setItems(Neutral);
-//        SetDefenseCreature.setValue(Neutral.getFirst());
+//        SetDefenseFraction.setValue("Castle");
+//        SetDefenseCreature.setItems(Castle);
+//        SetDefenseCreature.setValue(Castle.getFirst());
 
         FirstHeroeOffense.setItems(SetSkills);
         FirstHeroeOffense.setValue("None");
@@ -788,6 +808,7 @@ public class Controller {
                 SetAttackCreature.setItems(Neutral);
             }
             SetAttackCreature.getSelectionModel().selectedItemProperty().addListener((v,Oldvalue,Newvalue) -> {
+                AttCreat.setText(Newvalue);
                         for (int i = 0; i < creatures.length; i++) {
                             if (Objects.equals(Newvalue, creatures[i].Name)) {
                                 Attacking.set(i);
@@ -825,6 +846,7 @@ public class Controller {
                 SetDefenseCreature.setItems(Neutral);
             }
             SetDefenseCreature.getSelectionModel().selectedItemProperty().addListener((v,Oldvalue,Newvalue) -> {
+                DefCreat.setText(Newvalue);
                         for (int i = 0; i < creatures.length; i++) {
                             if (Objects.equals(Newvalue, creatures[i].Name)) {
                                 Defensing.set(i);
@@ -832,6 +854,73 @@ public class Controller {
                             }
                         }
                 });
+        });
+
+        Change.setOnAction(event -> {
+            int OldAttack = Integer.parseInt(SetFirstHeroeAttack.getText());
+            SetFirstHeroeAttack.setText(SetSecondHeroeAttack.getText());
+            SetSecondHeroeAttack.setText(String.valueOf(OldAttack));
+
+            int OldDefesne = Integer.parseInt(SetFirstHeroeDefense.getText());
+            SetFirstHeroeDefense.setText(SetSecondHeroeDefense.getText());
+            SetSecondHeroeDefense.setText(String.valueOf(OldDefesne));
+
+            int OldAmount = Integer.parseInt(Amount.getText());
+            Amount.setText(AmountDef.getText());
+            AmountDef.setText(String.valueOf(OldAmount));
+
+            int OldLvl = Integer.parseInt(SetFirstHeroeLvl.getText());
+            SetFirstHeroeLvl.setText(SetSecondHeroeLvl.getText());
+            SetSecondHeroeLvl.setText(String.valueOf(OldLvl));
+
+            boolean OldNeutral = AttackNeutral.isSelected();
+            AttackNeutral.setSelected(DefenseNeutral.isSelected());
+            DefenseNeutral.setSelected(OldNeutral);
+
+            String OldOffense = FirstHeroeOffense.getValue();
+            FirstHeroeOffense.setValue(SecondHeroeOffense.getValue());
+            SecondHeroeOffense.setValue(OldOffense);
+
+            String OldArmorer = FirstHeroeArmory.getValue();
+            FirstHeroeArmory.setValue(SecondHeroeArmory.getValue());
+            SecondHeroeArmory.setValue(OldArmorer);
+
+            String OldSpec = FirstHeroeSpec.getValue();
+            FirstHeroeSpec.setValue(SecondHeroeSpec.getValue());
+            SecondHeroeSpec.setValue(OldSpec);
+
+            String OldArchery = FirstHeroeArchery.getValue();
+            FirstHeroeArchery.setValue(SecondHeroeArchery.getValue());
+            SecondHeroeArchery.setValue(OldArchery);
+
+            int OldExtraArchery = Integer.parseInt(SetFirstHeroeExtraArchery.getText());
+            SetFirstHeroeExtraArchery.setText(SetSecondHeroeExtraArchery.getText());
+            SetSecondHeroeExtraArchery.setText(String.valueOf(OldExtraArchery));
+
+            int OldFixAtt = Integer.parseInt(FirstHeroeFixAtt.getText());
+            FirstHeroeFixAtt.setText(SecondHeroeFixAtt.getText());
+            SecondHeroeFixAtt.setText(String.valueOf(OldFixAtt));
+
+            int OldFixDef = Integer.parseInt(FirstHeroeFixDef.getText());
+            FirstHeroeFixDef.setText(SecondHeroeFixDef.getText());
+            SecondHeroeFixDef.setText(String.valueOf(OldFixDef));
+
+            String OldFraction = SetAttackFraction.getValue();
+            SetAttackFraction.setValue(SetDefenseFraction.getValue());
+            String NewFraction = SetAttackFraction.getValue();
+            SetDefenseFraction.setValue(OldFraction);
+
+            String OldCreature = creatures[Attacking.get()].Name;
+            SetAttackCreature.setValue(creatures[Defensing.get()].Name);
+            SetDefenseCreature.setValue(OldCreature);
+
+            boolean OldNativeLand = SetAttackNativeLand.isSelected();
+            SetAttackNativeLand.setSelected(SetDefenseNativeLand.isSelected());
+            SetDefenseNativeLand.setSelected(OldNativeLand);
+
+//            String OldCreat = creatures[Attacking.get()].Name;
+//            AttCreat.setText(creatures[Defensing.get()].Name);
+//            DefCreat.setText(OldCreat);
         });
 
         Calculate.setOnAction(event -> {
