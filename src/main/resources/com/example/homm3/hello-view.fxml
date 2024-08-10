@@ -254,9 +254,9 @@
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font></TextArea>
-      <Button fx:id="Change" alignment="CENTER" layoutX="323.0" layoutY="102.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="53.0" text="&lt;=&gt;">
+      <Button fx:id="Change" alignment="CENTER" layoutX="330.0" layoutY="99.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="41.0" style="-fx-background-radius: 15;" text="⮂">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
       <Label fx:id="DefCreat" alignment="CENTER" layoutX="404.0" layoutY="256.0" prefHeight="27.0" prefWidth="110.0" text="Text">

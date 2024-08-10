@@ -888,7 +888,7 @@ public class HoMM3 {
                             FinalMinDamage = (int) (((int)(minDamage * change) + (int)(minDamage*(creaturesHitStack.hate - 1))) * (1  - heroeDefense.armorer));
                     }
                         if (change < 1) {
-                            FinalMinDamage = (int) ((int)(minDamage) * (1  - heroeDefense.armorer));
+                            FinalMinDamage = (int) (minDamage * change * (1  - heroeDefense.armorer));
                             if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
                                 FinalMinDamage = (int)(((int)(minDamage * change) + (int)((int)(minDamage)*(creaturesHitStack.hate - 1))) * (1  - heroeDefense.armorer));
                     }
@@ -908,7 +908,7 @@ public class HoMM3 {
                         if (change < 1) {
                             FinalMaxDamage = (int) (maxDamage * change);
                             if (creaturesHitStack.Hate1.equals(creatures.Name) || creaturesHitStack.Hate2.equals(creatures.Name)) {
-                                FinalMaxDamage = (int)((int)(maxDamage * change) + (int)((int)(maxDamage)*(creaturesHitStack.hate - 1)));
+                                FinalMaxDamage = (int)((int)(maxDamage * change) + (int)(maxDamage *(creaturesHitStack.hate - 1)));
                     }
                         }
 
