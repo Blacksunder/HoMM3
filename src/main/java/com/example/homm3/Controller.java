@@ -217,11 +217,15 @@ public class Controller {
       OffenseCreatures Peasant = new OffenseCreatures("Peasant",1,1,1,1,1,1,0,0,1,0,0,"","",1,false);
       OffenseCreatures Rogue = new OffenseCreatures("Rogue",8,3,10,2,4,1,0,0,2,0,0,"","",1,false);
       OffenseCreatures Boar = new OffenseCreatures("Boar",6,5,15,2,3,1,0,0,2,0,0,"","",1,false);
+      OffenseCreatures Leprechaun = new OffenseCreatures("Leprechaun",8,5,15,3,5,1,0,0,2,0,0,"","",1,false);
       OffenseCreatures Nomad = new OffenseCreatures("Nomad",9,8,30,2,6,1,0,0,3,0,0,"","",1,false);
       OffenseCreatures Mummy = new OffenseCreatures("Mummy",7,7,30,3,5,1,0,0,3,0,0,"","",1,true);
       ArcheryCreatures Sharpshooter = new ArcheryCreatures("Sharpshooter",12,10,15,8,10,1,0,0,4,0,0,"","",1,false);
+      OffenseCreatures Satyr = new OffenseCreatures("Satyr",10,11,35,6,10,1,0,0,4,0,0,"","",1,false);
+      OffenseCreatures SteelGolem = new OffenseCreatures("SteelGolem",10,11,45,6,8,1,0,0,4,0,0,"","",1,true);
       OffenseCreatures GoldGolem = new OffenseCreatures("GoldGolem",11,12,50,8,10,1,0,0,5,0,0,"","",1,true);
       OffenseCreatures Troll = new OffenseCreatures("Troll",14,7,40,10,15,1,0,0,5,0,0,"","",1,false);
+      OffenseCreatures Fangarm = new OffenseCreatures("Fangarm",12,12,50,8,12,1,0,0,5,0,0,"","",1,true);
       OffenseCreatures DiamondGolem = new OffenseCreatures("DiamondGolem",13,12,60,10,14,1,0,0,6,0,0,"","",1,true);
       OffenseCreatures Enchanter = new OffenseCreatures("Enchanter",17,12,30,14,14,1,0,0,6,0,0,"","",1,false);
       OffenseCreatures FaerieDragon = new OffenseCreatures("FaerieDragon",20,20,500,20,30,1,0,0,7,0,0,"","",1,false);
@@ -229,7 +233,7 @@ public class Controller {
       OffenseCreatures CrystalDragon = new OffenseCreatures("CrystalDragon",40,40,800,60,75,1,0,0,7,0,0,"","",1,false);
       OffenseCreatures AzureDragon = new OffenseCreatures("AzureDragon",50,50,1000,70,80,1,0,0,7,0,0,"","",1,false);
 
-      Creatures[] NeutralCreatures = new Creatures[] {Peasant,Rogue,Boar,Nomad,Mummy,Sharpshooter,GoldGolem,Troll,DiamondGolem,Enchanter,FaerieDragon,RustDragon,CrystalDragon,AzureDragon};
+      Creatures[] NeutralCreatures = new Creatures[] {Peasant,Rogue,Boar,Leprechaun,Nomad,Mummy,Sharpshooter,Satyr,SteelGolem,GoldGolem,Troll,Fangarm,DiamondGolem,Enchanter,FaerieDragon,RustDragon,CrystalDragon,AzureDragon};
 
       Creatures[] creatures = new Creatures[] {Pikeman,Halberdier,Archer,Marksman,Griffin,RoyalGriffin,Swordsman,Crusader,Monc,Zealot,Cavalier,Champion,Angel,Archangel,
       Centaur,CentaurCaptain,Dwarf,BattleDwarf,WoodElf,GrandElf,Pegasus,SilverPegasus,DendroidGuard,DendroidSoldier,Unicorn,WarUnicorn,GreenDragon,GoldDragon,
@@ -242,7 +246,7 @@ public class Controller {
       Pixie,Sprite,AirElemental,StormElemental,WaterElemental,IceElemental,FireElemental,EnergyElemental,EarthElemental,MagmaElemental,PsychicElemental,MagicElemental,Firebird,Phoenix,
       Nymph,Oceanid,Sailor,Thug,Pirate,Corsair,SeaWolfs,OceanSpirits,Assid,SeaPriestess,Charmer,Nix,WarriorNix,SeaSnake,Aspid,
       Hobbit,GrenadierHobbit,Mechanic,Engineer,Armadillo,ChiefArmadillo,Automaton,AutomatonGuard,SoundWorm,OlgoyHorkoy,Gunner,BountyHunter,Couatl,CrimsonCouatl,Dreadnought,Juggernaut,
-      Peasant,Rogue,Boar,Nomad,Mummy,Sharpshooter,GoldGolem,Troll,DiamondGolem,Enchanter,FaerieDragon,RustDragon,CrystalDragon,AzureDragon};
+      Peasant,Rogue,Boar,Leprechaun,Nomad,Mummy,Sharpshooter,Satyr,SteelGolem,GoldGolem,Troll,Fangarm,DiamondGolem,Enchanter,FaerieDragon,RustDragon,CrystalDragon,AzureDragon};
 
       ObservableList<String> SetFraction = FXCollections.observableArrayList("Castle","Rampart","Tower","Inferno","Necropolis","Dungeon","Stronghold","Fortress","Conflux","Cove","Factory","Neutral");
       ObservableList<String> SetSkills = FXCollections.observableArrayList("None","Basic","Advanced","Expert");
@@ -258,7 +262,7 @@ public class Controller {
       ObservableList<String> Conflux = FXCollections.observableArrayList(Pixie.Name, Sprite.Name, AirElemental.Name, StormElemental.Name, WaterElemental.Name, IceElemental.Name, FireElemental.Name, EnergyElemental.Name, EarthElemental.Name, MagmaElemental.Name, PsychicElemental.Name, MagicElemental.Name, Firebird.Name, Phoenix.Name);
       ObservableList<String> Cove = FXCollections.observableArrayList(Nymph.Name, Oceanid.Name, Sailor.Name, Thug.Name, Pirate.Name, Corsair.Name, SeaWolfs.Name, OceanSpirits.Name, Assid.Name, SeaPriestess.Name, Charmer.Name, Nix.Name, WarriorNix.Name, SeaSnake.Name, Aspid.Name);
       ObservableList<String> Factory = FXCollections.observableArrayList(Hobbit.Name, GrenadierHobbit.Name, Mechanic.Name, Engineer.Name, Armadillo.Name, ChiefArmadillo.Name, Automaton.Name, AutomatonGuard.Name, SoundWorm.Name, OlgoyHorkoy.Name, Gunner.Name, BountyHunter.Name, Couatl.Name, CrimsonCouatl.Name, Dreadnought.Name, Juggernaut.Name);
-      ObservableList<String> Neutral = FXCollections.observableArrayList(Peasant.Name, Rogue.Name, Boar.Name, Nomad.Name, Mummy.Name, Sharpshooter.Name, GoldGolem.Name, Troll.Name, DiamondGolem.Name, Enchanter.Name, FaerieDragon.Name, RustDragon.Name, CrystalDragon.Name, AzureDragon.Name);
+      ObservableList<String> Neutral = FXCollections.observableArrayList(Peasant.Name, Rogue.Name, Boar.Name, Nomad.Name,Leprechaun.Name, Mummy.Name, Sharpshooter.Name, Satyr.Name, SteelGolem.Name, GoldGolem.Name, Troll.Name, Fangarm.Name, DiamondGolem.Name, Enchanter.Name, FaerieDragon.Name, RustDragon.Name, CrystalDragon.Name, AzureDragon.Name);
 
 
 
